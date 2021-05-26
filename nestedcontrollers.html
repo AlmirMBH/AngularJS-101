@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+	<title>Nested controllers</title>
+	
+	<script>			
+		let app = angular.module("sample", []);
+		app.controller("employee", ["$scope", function($scope){
+			$scope.name = "Almir";			
+			$scope.getName = function(){
+				return $scope.name;
+			}
+		}]);
+
+		app.controller("employeeDetails", ["$scope", function($scope){			
+			$scope.city = "Istanbul";
+			$scope.salary = 50000;
+                $scope.getCity = function(){
+                    return $scope.city;
+                }               
+                $scope.getSalary = function(){
+                    return $scope.salary;
+                }
+		}])
+		
+		app.controller("employeeTaxes", ["$scope", function($scope){			
+			$scope.getTaxes = function(){
+				return $scope.salary * 0.15;
+			}						
+
+            $scope.getNet = function(){            
+                return $scope.getSalary() - $scope.getTaxes();
+            }
+		}])
+
+        
+
+	</script>
+</head>
+<body ng-app="sample">
+	
+	<h3>Nested controllers / Scope inheritance</h3>	
+	<div ng-controller="employee">
+		Employee: <strong> {{ getName() }}</strong><br>
+		<div ng-controller="employeeDetails">		
+			City: <strong>{{ getCity() }}</strong><br> 
+            Salary: <strong>{{ getSalary() }}</strong>            
+            <div ng-controller="employeeTaxes">
+                Taxes: <strong>{{ getTaxes() }}</strong><br>
+                Net Salary: <strong>{{ getNet() }}</strong>
+            </div>
+		</div>
+	</div>
+
+</body>
+</html>

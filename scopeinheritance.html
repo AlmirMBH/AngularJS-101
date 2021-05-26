@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+	<title>Scope</title>
+
+	<h1>Three ways to use controllers / Scope inheritance</h1>
+	
+	<script>
+			
+		let app = angular.module("sample", []);
+
+		app.controller("emp", function(){
+			this.name = "Almir";
+			this.salary = "40000";
+			this.getSalary = function(){
+				return this.salary;
+			}			
+		});
+
+		app.controller("customerInfo", ["$scope", function($scope){
+			$scope.name = "Jag";
+			$scope.city = "Istanbul";
+			this.salary = 50000;
+			$scope.getCity = function(){
+				return this.city;
+			}
+			
+			this.getSalary = function(){
+				return this.salary;
+			}
+		}])
+		
+		app.controller("agentInfo", ["$scope", function($scope){
+			$scope.o = this;
+			this.agent = "Percy";
+			this.salary = 50000;
+			this.getAgent = function(){
+				return this.agent;
+			}
+
+			this.getSalary = function(){
+				return this.salary;
+			}			
+		}])
+	</script>
+</head>
+<body ng-app="sample"> <!-- sharing data via root scope into children and grandchildren is not recommmended -->
+
+	<h1>Scope inheritance</h1>
+	<h3>No scope used</h3>	
+	<div ng-controller="emp as o"> 
+		Hello {{ o.name }}, your salary is {{ o.getSalary() }}.<br>
+	</div>
+
+	<h3>Scope used without 'object'</h3>
+        <div ng-controller="customerInfo"> 
+		Hello {{ name }}, do you live in {{ getCity() }}.
+	</div>
+	
+	<h3>Scope used with 'object'</h3>
+	<div ng-controller="agentInfo as o"> 
+		Hello {{ o.agent }}, how can I help you?<br>
+		Hello {{ o.getAgent() }}, how can I help you?
+	</div>
+	
+	
+	
+	
+	<h3>Nested controllers / Scope inheritance</h3>	
+	<div ng-controller="customerInfo">
+		Details for user: <strong> {{ name }}</strong><br>
+
+		<div ng-controller="agentInfo as o">		
+			Agent {{ o.getAgent() }} from {{ getCity() }} earns {{ o.getSalary() }}
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+</body>
+</html>
