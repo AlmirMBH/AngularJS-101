@@ -11,6 +11,7 @@
 		let app = angular.module("sample", []).run(["$rootScope", function($rootScope){
             $rootScope.taxpercent = 0.15;
         }]);
+		
 		app.controller("employee", ["$scope", function($scope){
 			$scope.name = "Almir";			
 			$scope.getName = function(){
