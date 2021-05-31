@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <title>Angular JS</title>
+</head>
+ <!-- Use one of the following ISBNs to see how the app works -->
+ <!-- 
+     9781400032051
+     9780061564895
+-->
+<body ng-app="ToDoList"> 
+
+    <div style="max-width: 960px; text-align: center; margin: 0px auto">
+        
+        <div ng-controller="MainController">
+            
+            <div class="todolist"> 
+                <singlelist mylist="todo"></singlelist>
+                <input type="text" ng-model="toDoItem">
+                <button ng-click="addItem(todo.list, toDoItem)">Add item</button>
+            </div>
+            <hr>
+            
+            <div class="books">            
+                <singlelist mylist="books"></singlelist>
+                <input type="text" ng-model="newBook">
+                <button ng-click="addItem(books.list, newBook)">Add book</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modules -->
+    <script src="js/app.js"></script>
+    <!-- Controllers -->
+    <script src="js/controllers/MainController.js"></script>
+    <!-- Directives -->
+    <script src="js/directives/singlelist.js"></script>
+</body>
+</html>
