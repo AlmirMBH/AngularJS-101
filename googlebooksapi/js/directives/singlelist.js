@@ -1,4 +1,4 @@
-// when called, the argument will be bounf to the parameter (mylist), which will
+// when called, the argument will be bound to the parameter (mylist), which will
 // then be set as an attribute in scope
 
 app.directive("singlelist", function(){ 

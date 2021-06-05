@@ -44,7 +44,11 @@
             }
 		}])
 
-        
+		app.controller("scopes", ["$scope", "$rootScope", function($scope, $rootScope){			
+			$scope.getData = function(){				
+                return "Variable utside parent scope not recognized: " + $scope.salary + "; Variable outside root scope recognized: " + $rootScope.taxpercent;
+			}			
+		}])
 
 	</script>
 </head>
@@ -59,9 +63,15 @@
             <div ng-controller="employeeTaxes">
                 Taxes: <strong>{{ getTaxes() }}</strong><br>
                 Net Salary: <strong>{{ getNet() }}</strong>
-            </div>
+            </div>			
 		</div>
 	</div>
 
+	<h3>Root vs parent scope</h3>
+	<div ng-controller="scopes">
+		{{ getData()}}
+	</div>
+
+	
 </body>
 </html>
