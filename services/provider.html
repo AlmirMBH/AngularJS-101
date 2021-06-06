@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="provider.js"></script>
+    <title>Data binding</title>
+</head>
+<body>
+    <h1>Data binding</h1>
+
+        <div ng-app="app">
+            <h2>One-way binding</h2>
+            <div ng-controller="emp">
+                <div>                    
+                    Value of a is {{ a }}<br>
+                    Value of b is {{ b }}
+                </div>
+                <hr>        
+                <input type="text" ng-model="a" placeholder="Enter value a">
+                <input type="text" ng-model="b" placeholder="Enter value b"> <br><br>
+                Value of a is <span ng-bind="a">bound value</span><br>
+                Value of b is <span ng-bind="b">bound value</span><br>
+                <hr>
+                Fetch API data = {{ sum }} <br>
+                <button ng-click="doSum()">Get result</button>                      
+            </div>
+        </div>    
+    
+</body>
+</html>
