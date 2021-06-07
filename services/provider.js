@@ -55,4 +55,5 @@ app.provider('calcService', function(){ // line executed at the initial stage, d
 
 app.config(['calcServiceProvider', function(calcServiceProvider){   // EXECUTED AT THE INITIAL STAGE
     calcServiceProvider.configUrl("https://www.boredapi.com/api/activity"); // BEFORE $GET
+    //calcServiceProvider.configUrl("https://www.boredapi.com/api/activity/?key=6098037"); // specific activity
 }]);

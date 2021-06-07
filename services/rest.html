@@ -14,15 +14,12 @@
         <div ng-app="app">
             <h2>One-way binding</h2>
             <div ng-controller="emp">
-                <div>                    
-                    Value of a is {{ a }}<br>
-                    Value of b is {{ b }}
-                </div>
+               
                 <hr>        
-                <input type="text" ng-model="a" placeholder="Enter value a">
-                <input type="text" ng-model="b" placeholder="Enter value b"> <br><br>
-                Value of a is <span ng-bind="a">bound value</span><br>
-                Value of b is <span ng-bind="b">bound value</span><br>
+                <input type="text" ng-model="key" placeholder="Enter key">
+                <br><br>
+                Your key <span ng-bind="key">bound value</span><br>
+               
                 <hr>
                 Get API data = {{ sum }} <br>
                 <button ng-click="doSum()">Get result</button>                      

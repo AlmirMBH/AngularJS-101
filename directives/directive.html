@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" integrity="undefined" crossorigin="anonymous"> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="undefined" crossorigin="anonymous"></script>     -->
+    <script src="directives.js"></script>
+    <title>if, show, hide, repeat</title>
+</head>
+<body ng-app="app">
+    
+    <div ng-controller="emp">
+        <form action="" class="form-inline">
+            <div class="form-group">
+                <label for="search">Enter activity key</label>
+                <input type="text" name="search" class="form-control" ng-model="key">
+            </div>
+            <button class="btn btn-primary" ng-click="doSearch()">Search</button>
+        </form>        
+        <hr>
+        <div class="row">
+            <div class="col-sm-2">Activity key</div>
+            <div class="col-sm-2">{{activity}}</div>
+            <div ng-if="isGreaterThan2k" class="col-sm-2">If: {{ key }}</div>
+            <div ng-show="key > 2000" class="col-sm-2">Show: {{ key }}</div>
+            <div ng-hide="key < 2000" class="col-sm-2">Hide: {{ key }}</div>
+        </div>
+    </div>
+</body>
+</html>
