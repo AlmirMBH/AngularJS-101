@@ -2,26 +2,25 @@ let app = angular.module("app", []);
 
 app.controller("emp", ['$scope', 'empService', function($scope, empService){
     
-    $scope.doSearch = function(){
-        empService.getActivity($scope.key, function(result){            
+        empService.getActivity(function(result){            
             $scope.activity = result;
-            $scope.isgreaterThan2k = parseInt(key) > 2000;
+            $scope.isgreaterThan2k = parseInt($scope.key) > 2000;
         });
-    };
+    
 }]);
 
 app.service("empService", ['$http', '$log', function($http, $log){
-    this.getActivity = function(key, myCallback){        
+    
+    this.getActivity = function(myCallback){   
         $http({
-            url: 'https://www.boredapi.com/api/activity/?key=' + key,
+            url: 'https://api.publicapis.org/entries', //?key=' + key -cannot be used
             method: 'GET'            
         })
-        .then(function(resp){  
-                $log.log("Fetched data: ", resp.data)      
+        .then(function(resp){                 
                 myCallback(resp.data);
             },function(resp){
-                //$log.error("ERROR occured");
-                $log.log(resp);
+                $log.error("ERROR occured");  
+                //debugger;              
             });
-    }; return this;
+    };
 }]);

@@ -15,18 +15,28 @@
     <div ng-controller="emp">
         <form action="" class="form-inline">
             <div class="form-group">
-                <label for="search">Enter activity key</label>
+                <label for="search">Enter activity key greater than 2000</label>
                 <input type="text" name="search" class="form-control" ng-model="key">
-            </div>
-            <button class="btn btn-primary" ng-click="doSearch()">Search</button>
+            </div>            
         </form>        
         <hr>
         <div class="row">
-            <div class="col-sm-2">Activity key</div>
-            <div class="col-sm-2">{{activity}}</div>
-            <div ng-if="isGreaterThan2k" class="col-sm-2">If: {{ key }}</div>
+            <div class="col-sm-2">Activity key: {{ key }}</div>  
+            <div ng-if="isgreaterThan2k">
+                <div class="col-sm-2">If: {{ key }}</div>
+            </div>          
+            
             <div ng-show="key > 2000" class="col-sm-2">Show: {{ key }}</div>
             <div ng-hide="key < 2000" class="col-sm-2">Hide: {{ key }}</div>
+            <hr>
+            <div class="col-sm-2">
+                <h3>API activity with filters</h3>
+                <div class="col-sm-2" ng-repeat="items in activity.entries | orderBy:'API' | limitTo:7">
+                    API: {{items.API}}<br>
+                    Description: {{items.Description}}<br>
+                    LINK: {{items.Link}}<br>
+                    CATEGORY: {{items.Category}}<br><br>                    
+            </div>
         </div>
     </div>
 </body>
