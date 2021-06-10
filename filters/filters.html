@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" integrity="undefined" crossorigin="anonymous"> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="undefined" crossorigin="anonymous"></script>     -->
+    <script src="filters.js"></script>
+    <title>Filters</title>
+</head>
+<body ng-app="app">
+    
+    <div ng-controller="emp">
+        
+        <form action="" class="form-inline">
+            <div class="form-group">
+                <label for="searchAPI">Enter activity key greater than 2000</label>
+                <input type="text" name="search" class="form-control" ng-model="key">
+            </div>            
+        </form>        
+        <hr>
+
+        Search: <input ng-model="searchAPI" >
+        <div class="row">
+            <div class="col-sm-2">Activity key: {{ key }}</div>  
+            <div ng-if="isgreaterThan2k">
+                <div class="col-sm-2">If: {{ key }}</div>
+            </div>          
+            
+            <div ng-show="key > 2000" class="col-sm-2">Show: {{ key }}</div>
+            <div ng-hide="key < 2000" class="col-sm-2">Hide: {{ key }}</div>
+            <hr>
+            <div class="col-sm-2">
+                <h3>API activity with filters</h3>
+                <!-- Common filters: currency:'$':2; number:2, date:'shortdate'; date:'mediumdate'; -->
+                <!-- HARD-CODED <div class="col-sm-2" ng-repeat="items in activity.entries | orderBy:'API' | limitTo:5 | filter: {Description: 's', Link: 'g'}"> -->
+                                
+                <div class="col-sm-2" ng-repeat="items in activity.entries |filter: {Description: searchAPI}">
+                    API: {{items.API }}<br>                    
+                    Description: {{items.Description}}<br>
+                    LINK: {{items.Link}}<br>
+                    <strong>CATEGORY: {{ items.Category | uppercase }}</strong><br><br>                    
+                </div>                                    
+            </div>
+            <div class="col-sm-2">
+                <h3>API activity with filters</h3>
+                <div>
+                    Controller Instance: {{instance}}<br>
+                    Service Instance: {{ activity.entries[0].API }}
+                </div>
+        </div>
+        
+    </div>
+</body>
+</html>
