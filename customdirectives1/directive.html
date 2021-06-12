@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" integrity="undefined" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="undefined" crossorigin="anonymous"></script>    
+    <script src="directive.js"></script>
+    <title>Directives</title>
+</head>
+<body ng-app="app">    
+    
+        <div ng-controller="emp" class="container mt-5">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label>Just click or enter a number (e.g. 2526437 or 3136729):</label>
+                    <input type="text" class="form-control" ng-model="search">
+                    <button class="btn btn-primary" ng-click="doSearch()">Search</button>
+                </div>
+            </form>
+            <hr>            
+            <div emp-details ng-if="activity != undefined"></div>
+        </div>        
+    
+</body>
+</html>

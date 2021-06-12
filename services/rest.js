@@ -17,7 +17,7 @@ app.factory('calcFactory', ['$http', '$log', function($http, $log){
 
     oCalcService.getSum = function(key, myFunction){
         $http({
-            url: 'https://www.boredapi.com/api/activity/?key=' + key,
+            url: 'https://www.boredapi.com/api/activity',
             method: 'GET'
         }).then(function(resp){ // api data are stored in data that is pre-defined
             $log.log("Fetched data: ", resp.data)
